@@ -2,7 +2,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 
 metadata:
-  name: kube-prometheus-stack
+  name: blackbox-exporter
   namespace: argocd
 
 spec:
@@ -10,15 +10,14 @@ spec:
 
   sources:
     - repoURL: #link#
-      chart: kube-prometheus-stack
+      chart: prometheus-blackbox-exporter
       targetRevision: #version#
 
       helm:
         valueFiles:
-          - $values/platform/monitoring/values.yaml
+          - $values/platform/blackbox-exporter/values.yaml
 
     - repoURL: https://github.com/Ramzan9000/EKS-V1-gitops
-      targetRevision: main
       ref: values
 
   destination:

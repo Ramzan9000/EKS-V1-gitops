@@ -1,0 +1,35 @@
+deploymentMode: Monolithic
+
+loki:
+  auth_enabled: false
+
+  commonConfig:
+    replication_factor: 1
+
+  schemaConfig:
+    configs:
+      - from: "2026-09-10"
+        store: tsdb
+        object_store: s3
+        schema: v13
+        index:
+          prefix: loki_index_
+          period: 24h
+
+  storage:
+    type: s3
+    bucketNames:
+      chunks: YOUR-CHUNKS-BUCKET #idk what this is#
+      ruler: YOUR-RULER-BUCKET #idk what this is#
+    s3:
+      region: eu-west-2
+
+singleBinary:
+  replicas: 1
+
+minio:
+  enabled: false
+
+
+
+#unfinished need to add my bucket nnames i made in s3 thats it but i dont understand this file that much no notes made  ##

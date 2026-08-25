@@ -1,0 +1,38 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+
+metadata:
+  name: external-dns
+  namespace: argocd
+
+spec:
+  project: default
+
+  sources:
+    - repoURL: #link#
+      chart: external-dns
+      targetRevision: #version#
+
+      helm:
+        valueFiles:
+          - $values/platform/external-dns/values.yaml
+
+    - repoURL: https://github.com/Ramzan9000/EKS-V1-gitops
+      targetRevision: main
+      ref: values
+
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: external-dns
+
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+
+
+    syncOptions:
+      - CreateNamespace=true
+
+
+# incomplete need to just get the helm chart and its version from the webiste #

@@ -1,0 +1,82 @@
+this is basically kube-prometheus-stack values.yam
+where we configure 
+
+Prometheus - tick 
+Grafana - tick
+Alertmanager - tick 
+
+
+
+prometheus:
+  enabled: true
+
+  prometheusSpec:
+    retention: 15d
+
+    resources:
+      requests:
+        cpu: 200m
+        memory: 512Mi
+      limits:
+        cpu: 1
+        memory: 2Gi
+
+    probeNamespaceSelector:
+      matchNames:
+        - monitoring
+
+    ruleNamespaceSelector:
+      matchNames:
+        - monitoring
+#this part fully done#
+
+grafana:
+  enabled: true
+
+  additionalDataSources:
+    - name: Prometheus
+      type: prometheus
+      url: http://kube-prometheus-stack-prometheus.monitoring.svc.cluster.local:9090 #( check this value ourselves this isnt the correct value)#
+      access: proxy
+      isDefault: true
+
+    - name: Loki
+      type: loki
+      url: http://loki.logging.svc.cluster.local:3100 #( check this value ourselves this isnt the correct value)#
+      access: proxy
+
+  extraConfigmapMounts:
+    - name: grafana-dashboards
+      configMap: grafana-dashboards
+      mountPath: /var/lib/grafana/dashboards
+      readOnly: true
+
+
+
+
+alertmanager:
+  enabled: true
+
+  config:
+    route:
+      receiver: default
+
+      routes:
+        - matchers:
+            - severity="critical"
+          receiver: critical
+
+        - matchers:
+            - severity="warning"
+          receiver: warning
+
+    receivers:
+      - name: default
+
+      - name: critical
+        email_configs:
+          - to: "you@example.com"
+
+      - name: warning
+        slack_configs:
+          - channel: "#alerts"

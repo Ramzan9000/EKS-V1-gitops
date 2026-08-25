@@ -1,0 +1,27 @@
+kind: Deployment
+
+config:
+  modules:
+    http_2xx:
+      prober: http
+      timeout: 5s
+      http:
+        follow_redirects: true
+        preferred_ip_protocol: "ip4"
+
+resources:
+  requests:
+    cpu: 50m
+    memory: 64Mi
+  limits:
+    cpu: 200m
+    memory: 256Mi
+
+service:
+  type: ClusterIP
+  port: 9115
+
+replicas: 1
+
+
+#fully done just echekc the port matches the helm chart where insatlling part look at our notes #

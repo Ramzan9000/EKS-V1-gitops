@@ -1,0 +1,39 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+
+metadata:
+  name: ingress-nginx
+  namespace: argocd
+
+spec:
+  project: default
+
+  sources:
+    - repoURL: #link#
+      chart: ingress-nginx
+      targetRevision: #version#
+
+      helm:
+        valueFiles:
+          - $values/platform/ingress-nginx/values.yaml
+
+    - repoURL:  https://github.com/Ramzan9000/EKS-V1-gitops
+      targetRevision: main
+      ref: values
+
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: ingress
+
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+
+      
+    syncOptions:
+      - CreateNamespace=true
+
+
+
+# incomplete need to just get the helm chart and its version from the webiste #

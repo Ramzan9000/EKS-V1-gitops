@@ -2,7 +2,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 
 metadata:
-  name: kube-prometheus-stack
+  name: fluent-bit
   namespace: argocd
 
 spec:
@@ -10,12 +10,12 @@ spec:
 
   sources:
     - repoURL: #link#
-      chart: kube-prometheus-stack
+      chart: fluent-bit
       targetRevision: #version#
 
       helm:
         valueFiles:
-          - $values/platform/monitoring/values.yaml
+          - $values/platform/logging/fluent-bit/values.yaml
 
     - repoURL: https://github.com/Ramzan9000/EKS-V1-gitops
       targetRevision: main
@@ -23,7 +23,7 @@ spec:
 
   destination:
     server: https://kubernetes.default.svc
-    namespace: monitoring
+    namespace: logging
 
   syncPolicy:
     automated:
@@ -33,6 +33,5 @@ spec:
 
     syncOptions:
       - CreateNamespace=true
-
 
 # incomplete need to just get the helm chart and its version from the webiste #

@@ -1,0 +1,5 @@
+provider:
+  name: aws
+
+domainFilters:
+  - ramzans-lab.com (or whatever our website is called )
