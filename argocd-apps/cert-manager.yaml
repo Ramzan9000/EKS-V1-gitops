@@ -9,9 +9,9 @@ spec:
   project: default
 
   sources:
-    - repoURL:  #link#
+    - repoURL: oci://quay.io/jetstack/charts/cert-manager:v1.21.1
       chart: cert-manager
-      targetRevision: #version#
+      targetRevision: v1.21.1 
 
       helm:
         valueFiles:
@@ -34,4 +34,3 @@ spec:
     syncOptions:
       - CreateNamespace=true
 
-# incomplete need to just get the helm chart and its version from the webiste #

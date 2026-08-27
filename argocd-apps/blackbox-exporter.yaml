@@ -9,9 +9,9 @@ spec:
   project: default
 
   sources:
-    - repoURL: #link#
+    - repoURL: https://prometheus-community.github.io/helm-charts
       chart: prometheus-blackbox-exporter
-      targetRevision: #version#
+      targetRevision: 11.17.2
 
       helm:
         valueFiles:

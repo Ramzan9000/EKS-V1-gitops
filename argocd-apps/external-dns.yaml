@@ -9,9 +9,9 @@ spec:
   project: default
 
   sources:
-    - repoURL: #link#
+    - repoURL: https://kubernetes-sigs.github.io/external-dns/
       chart: external-dns
-      targetRevision: #version#
+      targetRevision: 1.21.1
 
       helm:
         valueFiles:
@@ -33,6 +33,3 @@ spec:
 
     syncOptions:
       - CreateNamespace=true
-
-
-# incomplete need to just get the helm chart and its version from the webiste #

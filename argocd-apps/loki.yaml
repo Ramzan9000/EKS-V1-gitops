@@ -10,9 +10,9 @@ spec:
   project: default
 
   sources:
-    - repoURL: #link#
+    - repoURL: https://grafana-community.github.io/helm-charts
       chart: loki
-      targetRevision: #version#
+      targetRevision: 18.0.0
 
       helm:
         valueFiles:
@@ -35,4 +35,3 @@ spec:
     syncOptions:
       - CreateNamespace=true
 
-# incomplete need to just get the helm chart and its version from the webiste #

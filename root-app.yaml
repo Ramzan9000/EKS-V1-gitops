@@ -9,13 +9,13 @@ spec:
   project: default
 
   source:
-    repoURL: https://github.com/Ramzan9000/EKS-V1
+    repoURL: https://github.com/Ramzan9000/EKS-V1-gitops
     targetRevision: main
-    path: kubernetes
+    path: argocd-apps
 
   destination:
     server: https://kubernetes.default.svc
-    namespace: game
+    namespace: argocd
 
   syncPolicy:
     automated:
