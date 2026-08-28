@@ -1,4 +1,4 @@
-deploymentMode: Monolithic
+deploymentMode: SingleBinary
 
 loki:
   auth_enabled: false
@@ -8,7 +8,7 @@ loki:
 
   schemaConfig:
     configs:
-      - from: "2026-09-10"
+      - from: "2026-08-28"
         store: tsdb
         object_store: s3
         schema: v13
@@ -26,15 +26,6 @@ loki:
 
 singleBinary:
   replicas: 1
-
-read:
-  replicas: 0
-
-write:
-  replicas: 0
-
-backend:
-  replicas: 0
 
 minio:
   enabled: false
