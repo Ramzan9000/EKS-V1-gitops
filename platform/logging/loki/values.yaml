@@ -19,17 +19,26 @@ loki:
   storage:
     type: s3
     bucketNames:
-      chunks: YOUR-CHUNKS-BUCKET #idk what this is#
-      ruler: YOUR-RULER-BUCKET #idk what this is#
+      chunks: eks-v1-dev-loki-logs
+      ruler: eks-v1-dev-loki-logs
     s3:
       region: eu-west-2
 
 singleBinary:
   replicas: 1
 
+read:
+  replicas: 0
+
+write:
+  replicas: 0
+
+backend:
+  replicas: 0
+
 minio:
   enabled: false
 
-
-
-#unfinished need to add my bucket nnames i made in s3 thats it but i dont understand this file that much no notes made  ##
+serviceAccount:
+  create: true
+  name: loki
