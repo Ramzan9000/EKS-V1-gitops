@@ -1,4 +1,4 @@
-deploymentMode: SingleBinary
+deploymentMode: Monolithic
 
 loki:
   auth_enabled: false
@@ -26,6 +26,15 @@ loki:
 
 singleBinary:
   replicas: 1
+
+read:
+  replicas: 0
+
+write:
+  replicas: 0
+
+backend:
+  replicas: 0
 
 minio:
   enabled: false
