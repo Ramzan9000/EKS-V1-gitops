@@ -1,11 +1,3 @@
-this is basically kube-prometheus-stack values.yam
-where we configure 
-
-Prometheus - tick 
-Grafana - tick
-Alertmanager - tick 
-
-
 
 prometheus:
   enabled: true
