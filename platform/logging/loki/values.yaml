@@ -27,9 +27,8 @@ loki:
 singleBinary:
   replicas: 1
   persistence:
+    enabled: true
     storageClass: gp2
-    accessModes:
-      - ReadWriteOnce
     size: 10Gi
 
 read:
@@ -47,4 +46,3 @@ minio:
 serviceAccount:
   create: true
   name: loki
-  
