@@ -3,3 +3,7 @@ provider:
 
 domainFilters:
   - ramzans-lab.com
+
+serviceAccount:
+  create: true
+  name: external-dns

@@ -27,7 +27,7 @@ config:
     [OUTPUT]
         Name              loki
         Match             kube.*
-        Host              loki.logging.svc.cluster.local # find correct servicename using kubectl get svc -n (then the namespace the thing we want is in ) and get the correct port fro. here # 
+        Host              loki.logging.svc.cluster.local
         Port              3100
         Labels            job=fluent-bit
 
