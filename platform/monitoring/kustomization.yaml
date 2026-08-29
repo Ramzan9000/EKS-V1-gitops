@@ -4,7 +4,7 @@ kind: Kustomization
 namespace: monitoring
 
 configMapGenerator:
-  - name: grafana-custom-dashboards
+  - name: grafana-dashboards
     files:
       - dashboards/blackbox.json
       - dashboards/kube-state-metrics.json
