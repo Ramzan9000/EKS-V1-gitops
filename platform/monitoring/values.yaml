@@ -39,12 +39,9 @@ grafana:
 
   extraConfigmapMounts:
   - name: grafana-custom-dashboards
-    configMap: grafana-custom-dashboards
+    configMap: grafana-dashboards
     mountPath: /var/lib/grafana/dashboards
     readOnly: true
-
-
-
 
 alertmanager:
   enabled: true
