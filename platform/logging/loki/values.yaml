@@ -28,7 +28,7 @@ singleBinary:
   replicas: 1
   persistence:
     enabled: true
-    storageClass: gp2
+    storageClass: gp3
     size: 10Gi
 
 chunksCache:
