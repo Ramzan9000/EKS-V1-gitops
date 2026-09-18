@@ -55,11 +55,11 @@ alertmanager:
       routes:
         - matchers:
             - severity="critical"
-            receiver: critical
+          receiver: critical
 
         - matchers:
             - severity="warning"
-            receiver: warning
+          receiver: warning
 
     receivers:
       - name: default
