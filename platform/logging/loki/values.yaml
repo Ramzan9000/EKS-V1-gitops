@@ -31,6 +31,12 @@ singleBinary:
     storageClass: gp2
     size: 10Gi
 
+chunksCache:
+  enabled: false
+
+resultsCache:
+  enabled: false
+
 read:
   replicas: 0
 
