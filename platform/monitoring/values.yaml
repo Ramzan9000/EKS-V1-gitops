@@ -38,7 +38,7 @@ grafana:
       access: proxy
 
   extraConfigmapMounts:
-  - name: grafana-custom-dashboards
+  - name: grafana-dashboards
     configMap: grafana-dashboards
     mountPath: /var/lib/grafana/dashboards
     readOnly: true
