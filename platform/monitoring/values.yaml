@@ -1,4 +1,3 @@
-
 prometheus:
   enabled: true
 
@@ -24,6 +23,9 @@ prometheus:
 
 grafana:
   enabled: true
+
+  podAnnotations:
+    gitops.grafana-dashboard-config: "2026-09-18"
 
   additionalDataSources:
     - name: Prometheus
@@ -53,11 +55,11 @@ alertmanager:
       routes:
         - matchers:
             - severity="critical"
-          receiver: critical
+            receiver: critical
 
         - matchers:
             - severity="warning"
-          receiver: warning
+            receiver: warning
 
     receivers:
       - name: default
